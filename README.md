@@ -7,7 +7,7 @@ April 21 2015
 
 
 ##Description
-An app that allows a user at an animal shelter to add animals currently housed at a shelter to a list filtered by animal type (e.g., dog, cat, bird, etc.). If the animal is adopted, the user is able to move the animal to a separate list that shows that they have been adopted.
+An app that allows a user at an animal shelter to add animals currently housed at a shelter to a list filtered by animal type (e.g., dog, cat, bird, etc.). If the animal is adopted, the user is able to move the animal to a separate list that shows that they have been adopted. 
 
 ##Technologies Used
 <a href='https://angularjs.org/'>Angular JS</a> <br>

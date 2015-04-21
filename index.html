@@ -6,11 +6,13 @@
     <script src="lib/angular.js"></script>
     <script src="app.js"></script>
     <script src="controllers/AnimalCtrl.js"></script>
+    <script src="controllers/AdoptionCtrl.js"></script>
     <script src="services/AnimalsFactory.js"></script>
     <link rel='stylesheet' href='http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css'>
   </head>
   <body>
-    <div class='container' ng-controller='AnimalCtrl'>
+    <div class='container'>
+      <div ng-controller='AnimalCtrl'>
       <div class='row'>
         <div class='col-md-4'>
           <h2>Search Animal</h2>
@@ -43,7 +45,25 @@
           </form>
         </div>
       </div>
-
     </div>
+      <div class="row adopted" ng-controller="AdoptionCtrl">
+        <div class="col-md-6" ng-show="animals.length">
+        <h3>Not Adopted</h3>
+        <ul>
+          <li ng-repeat="item in animalsNotAdopted = (animals | filter: {adopted: false})">
+          <a ng-click="grantAdoption(item)">{{item.name}}</a>
+          </li>
+        </ul>
+      </div>
+      <div class="col-md-6" ng-show="animalsAdopted.length">
+        <h3>Adopted!!</h3>
+        <ul>
+          <li ng-repeat="item in animalsAdopted = (animals | filter:{adopted: true})">
+          <a ng-click='rescindAdoption(item)'>{{item.name}} - was adopted! -</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+   </div>
   </body>
 </html>
