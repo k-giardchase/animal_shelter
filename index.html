@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="animalShelter">
+  <head>
+    <meta charset="UTF-8">
+    <title>Animal Shelter</title>
+    <script src="lib/angular.js"></script>
+    <script src="app.js"></script>
+    <script src="controllers/AnimalCtrl.js"></script>
+    <script src="services/AnimalsFactory.js"></script>
+    <link rel='stylesheet' href='http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css'>
+  </head>
+  <body>
+    <div class='container' ng-controller='AnimalCtrl'>
+      <div class='row'>
+        <div class='col-md-4'>
+          <h2>Search Animal</h2>
+          <form class="form-inline" role="form">
+            <div class="form-group">
+              <input ng-model="query" type="text" class="form-control" placeholder="Search">
+            </div>
+          </form>
+        </div>
+        <div class='col-md-4'>
+          <h2 ng-show='animals.length && filteredAnimals.length'>Animal List</h2>
+          <h2 ng-show='animals.length && !filteredAnimals.length'>No matches</h2>
+          <ul>
+            <li ng-repeat='item in filteredAnimals = (animals | filter:{type: query})'>
+            {{ item.name }}
+            {{ item.type}}</li>
+          </ul>
+        </div>
+        <div class='col-md-4'>
+          <h2>Add Animal</h2>
+          <form ng-submit='addAnimal()' role='form'>
+            <div class='form-group'>
+              <input type='text' ng-model='animalName' class='form-control' placeholder='Name'>
+            </div>
+            <div class='form-group'>
+              <input type='text' ng-model='animalType' class='form-control' placeholder='Type'>
+            </div>
+
+            <button type='submit' class='btn btn-warning'>Add</button>
+          </form>
+        </div>
+      </div>
+
+    </div>
+  </body>
+</html>
